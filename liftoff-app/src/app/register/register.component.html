@@ -1,0 +1,102 @@
+
+ <div class="row" style="height: 50px; margin: 0px;"></div>
+  <div class="container">
+   
+   	<div class="row">
+   	  <div class="col-md-4">
+	     <form>
+	  	    <div class="form-group">
+		      <label for="edit-name">Name </label>
+		      <input type="text" id="edit-name" class="form-control" [(ngModel)]="user.name" name="name" value="">
+		    </div>
+		    
+		    <div class="form-group">
+		      <label for="edit-name">Email</label>
+		      <input type="text" id="edit-name" class="form-control"  name="email" [(ngModel)]="user.email" value="">
+		    </div>
+		    
+	
+			  <div>
+			    <input type="button" id="edit-submit" class="btn btn-primary" (click)="userRegister()" name="op" value="Register">
+			  </div>
+			  <br>
+			  <span style="color: green;">{{successMsg}}</span>
+			  <span style="color:red;">{{errorMsg}}</span>
+
+		 </form>
+
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Get mutual friends </h3>
+			<form>
+	  	    <div class="form-group">
+		      <label for="edit-name">Friend 1 Email </label>
+		      <input type="text" id="edit-name" class="form-control" [(ngModel)]="mutual.email1" name="name" value="">
+		    </div>
+		    
+		    <div class="form-group">
+		      <label for="edit-name">Friend 2 Email</label>
+		      <input type="text" id="edit-name" class="form-control"  name="email" [(ngModel)]="mutual.email2" value="">
+		    </div>
+		    
+	
+			  <div>
+			    <input type="button" id="edit-submit" class="btn btn-primary" (click)="getMutualfriend()" name="mutual" value="Mutual Friend">
+			  </div>
+			  <br>
+			  <ul class="list-group" *ngFor="let mutual_friend of mutual_friends">
+				   <li class="list-group-item">Name: {{mutual_friend.friends[0].name}} </li>
+				  <li class="list-group-item">Email: {{mutual_friend.friends[0].email}} </li>
+				  <!-- <button class="btn btn-primary">Friend</button> -->
+				  <br>
+				  
+				</ul>
+
+
+		 </form>
+
+			</div>
+
+		</div>
+
+	  </div>
+
+	  <div class="col-md-4">
+	  	
+	  	<form>
+	  		<div class="">
+	  			<label for="edit-name">Enter user email to search his friend </label>
+	  			<input type="text" style ="margin-bottom: 10px;" class="form-control" [(ngModel)]="myemail" name="email" value="">
+
+	  			<button class="btn btn-primary" (click)="listAllFriend()">Search Friend</button>
+	  			<br>
+
+	  			<ul class="list-group" *ngFor="let friend of friends">
+				   <li class="list-group-item">Name: {{friend.user2.name}} </li>
+				  <li class="list-group-item">Email: {{friend.user2.email}} </li>
+				  <!-- <button class="btn btn-primary">Friend</button> -->
+				  <br>
+				  
+				</ul>
+
+	  		</div>
+	  	</form>
+	  </div>
+
+	  <div class="col-md-4">
+	    <h4>All members of this application</h4>
+	   <ul class="list-group" *ngFor="let member of members">
+		   <li class="list-group-item">Name: {{member.name}} </li>
+		  <li class="list-group-item">Email: {{member.email}} </li>
+		  <button class="btn btn-primary" (click) = "addNewFriend(member.email)" disabled="">Add Friend</button>
+		  <br>
+		  
+		</ul>
+	  </div>
+
+	</div>
+	  
+	  <!-- <div class="clearfix"> </div> -->
+  
+  </div>
+
